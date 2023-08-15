@@ -1,7 +1,9 @@
 // how many strings start with s
 // how many strings equal s
+// remove s
 
 class Trie {
+
 public:
 
 	struct node
@@ -57,4 +59,17 @@ public:
 		}
 		return cur->cnt_pfx;
 	}
+
+	void remove (string s)
+	{
+		node*cur=root;
+		for(auto it:s)
+		{
+			int idx=it-'a';
+			cur=cur->child[idx];
+			cur->cnt_pfx--;
+		}
+		cur->terminate--;
+	}
+
 };
